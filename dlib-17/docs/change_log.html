@@ -1,0 +1,753 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="verify-v1" content="02MiiaFNVzS5/u0eQhsy3/knioFHsia1X3DXRpHkE6I=">
+<meta name="google-site-verification" content="DGSSJMKDomaDaDTIRJ8jDkv0YMx9Cz7OESbXHjjr6Jw">
+<title>dlib C++ Library
+               - Change Log</title>
+<script language="JavaScript">
+
+            // ---------------------------------------------
+            // --- Name:    Easy DHTML Treeview           --
+            // --- Author:  D.D. de Kerf                  --
+            // --- Version: 0.2          Date: 13-6-2001  --
+            // ---------------------------------------------
+            function Toggle(node)
+            {
+               // Unfold the branch if it isn't visible
+               var next_node = node.nextSibling;
+               if (next_node.style.display == 'none')
+               {
+                  // Change the image (if there is an image)
+                  if (node.childNodes.length > 0)
+                  {
+                     if (node.childNodes.length > 0)
+                     { 
+                        if (node.childNodes.item(0).nodeName == "IMG")
+                        {
+                           node.childNodes.item(0).src = "minus.gif";
+                        }
+                     }
+                  }
+
+                  next_node.style.display = 'block';
+               }
+               // Collapse the branch if it IS visible
+               else
+               {
+                  // Change the image (if there is an image)
+                  if (node.childNodes.length > 0)
+                  {
+                     if (node.childNodes.length > 0)
+                     { 
+                        if (node.childNodes.item(0).nodeName == "IMG")
+                        {
+                           node.childNodes.item(0).src = "plus.gif";
+                        }
+                     }
+                  }
+
+                  next_node.style.display = 'none';
+               }
+
+            }
+            function BigToggle(node)
+            {
+               // Unfold the branch if it isn't visible
+               var next_node = node.nextSibling;
+               if (next_node.style.display == 'none')
+               {
+                  // Change the image (if there is an image)
+                  if (node.childNodes.length > 0)
+                  {
+                     if (node.childNodes.length > 0)
+                     { 
+                        if (node.childNodes.item(0).nodeName == "IMG")
+                        {
+                           node.childNodes.item(0).src = "bigminus.gif";
+                        }
+                     }
+                  }
+
+                  next_node.style.display = 'block';
+               }
+               // Collapse the branch if it IS visible
+               else
+               {
+                  // Change the image (if there is an image)
+                  if (node.childNodes.length > 0)
+                  {
+                     if (node.childNodes.length > 0)
+                     { 
+                        if (node.childNodes.item(0).nodeName == "IMG")
+                        {
+                           node.childNodes.item(0).src = "bigplus.gif";
+                        }
+                     }
+                  }
+
+                  next_node.style.display = 'none';
+               }
+
+            }
+            </script><style type="text/css">
+               body {margin:0px;}
+               pre {margin:0px;}
+
+               ul.tree  li { list-style: none;  margin-left:10px;} 
+               ul.tree  { margin:0px; padding:0px; margin-left:5px; font-size:0.95em; }
+               ul.tree  li ul { margin-left:10px; padding:0px; }
+
+               div#component {
+                  background-color:white; 
+                  border: 2px solid rgb(102,102,102); 
+                  text-align:left;
+                  margin-top: 1.5em;
+                  padding: 0.7em;
+               }
+
+               div#function {
+                  background-color:white; 
+                  border: 2px solid rgb(102,102,255); 
+                  text-align:left;
+                  margin-top: 0.3em;
+                  padding: 0.3em;
+               }
+
+               div#class {
+                  background-color:white; 
+                  border: 2px solid rgb(255,102,102); 
+                  text-align:left;
+                  margin-top: 0.3em;
+                  padding: 0.3em;
+               }
+
+               div#extension {
+                  background-color:#FDFDFD; 
+                  border: 1px solid rgb(102,102,102); 
+                  text-align:left;
+                  margin-top: 1.0em;
+                  padding: 0.7em;
+               }
+
+               div#logb {
+                  text-align:left;
+                  padding: 0.0em;
+                  float: left;
+                  background-color:#c0c0c0; 
+                  border: double ; 
+                  margin: 0.5em;
+               }
+
+               .bdotted {border-bottom: 1px dotted}
+               .bdashed {border-bottom: 1px dashed}
+               .bsolid {border-bottom: 1px solid}
+               .bdouble {border-bottom: 1px double}
+               .bgroove {border-bottom: 1px groove}
+               .bridge {border-bottom: 1px ridge}
+               .binset {border-bottom: 1px inset}
+               .boutset {border-bottom: 1px outset}
+
+               div#row1 {
+                  background-color:#dfdfdf; 
+               }
+               div#row2 {
+                  background-color:#f2f2f2; 
+               }
+
+               div#typedefs {
+                  margin-left: 1.5em;
+                  margin-top: 0.2em;
+                  border: 1px dotted;
+                  width: 52em;
+               }
+
+               div#tdn {
+                  width: 10em;
+               }
+
+               .fullhr {
+                  clear: both;
+               }
+
+               body {
+                  text-align: center;
+               }
+
+               div#entire_page {
+                  width:62.5em;  
+                  text-align: left;
+                  margin-top: 0.4em;
+                  margin-left: auto;
+                  margin-right: auto;
+               }
+            </style>
+</head>
+<body bgcolor="#EDF3EE">
+<a name="top"></a><div id="entire_page"><table bgcolor="white" height="100%" bordercolor="#EDF3EE" CELLSPACING="0" CELLPADDING="10"><tr height="100%">
+<td BGCOLOR="#F5F5F5" style="padding:7px; border: 1px solid rgb(102,102,102);" VALIGN="TOP" height="100%">
+<br><table WIDTH="145" height="100%">
+<tr>
+<td VALIGN="TOP">
+      <b>The Library</b><ul class="tree">
+<li><a href="algorithms.html">Algorithms</a></li>
+<li><a href="api.html">API Wrappers</a></li>
+<li><a href="bayes.html">Bayesian Nets</a></li>
+<li><a href="compression.html">Compression</a></li>
+<li><a href="containers.html">Containers</a></li>
+<li><a href="imaging.html">Image Processing</a></li>
+<li><a href="ml.html">Machine Learning</a></li>
+<li><a href="metaprogramming.html">Metaprogramming</a></li>
+<li><a href="other.html">Miscellaneous</a></li>
+<li><a href="network.html">Networking</a></li>
+<li><a href="optimization.html">Optimization</a></li>
+<li><a href="parsing.html">Parsing</a></li>
+</ul>
+<br>
+ 
+
+      <b>Help/Info</b><ul class="tree">
+<li>
+<a onclick="Toggle(this)" style="cursor: pointer;margin-left:-9px"><img src="plus.gif"><font color="green"><u>Examples</u></font></a><ul style="display:none;">
+<li><a href="file_to_code_ex.cpp.html">Base64_Encoder</a></li>
+<li><a href="bayes_net_ex.cpp.html">Bayesian_Network</a></li>
+<li><a href="bayes_net_from_disk_ex.cpp.html">Bayesian_Network_From_Disk</a></li>
+<li><a href="bayes_net_gui_ex.cpp.html">Bayesian_Network_GUI</a></li>
+<li><a href="compress_stream_ex.cpp.html#_top">Cmd_Line_Parser</a></li>
+<li><a href="compress_stream_ex.cpp.html">Compress_Stream</a></li>
+<li><a href="config_reader_ex.cpp.html">Config_File_Reader</a></li>
+<li><a href="custom_trainer_ex.cpp.html">Custom_Trainers</a></li>
+<li><a href="dir_nav_ex.cpp.html">Directory_Navigation</a></li>
+<li><a href="empirical_kernel_map_ex.cpp.html">Empirical_Kernel_Map</a></li>
+<li><a href="gui_api_ex.cpp.html">GUI</a></li>
+<li><a href="server_http_ex.cpp.html">HTTP_Server</a></li>
+<li><a href="image_ex.cpp.html">Image</a></li>
+<li><a href="kcentroid_ex.cpp.html">Kernel_Centroid</a></li>
+<li><a href="kkmeans_ex.cpp.html">Kernel_K-Means_Clustering</a></li>
+<li><a href="krr_regression_ex.cpp.html">Kernel_Ridge_Regression</a></li>
+<li><a href="krls_filter_ex.cpp.html">Kernel_RLS_Filtering</a></li>
+<li><a href="krls_ex.cpp.html">Kernel_RLS_Regression</a></li>
+<li><a href="krr_classification_ex.cpp.html">KRR_Classification</a></li>
+<li><a href="linear_manifold_regularizer_ex.cpp.html">Linear_Manifold_Regularizer</a></li>
+<li><a href="logger_ex.cpp.html">Logger</a></li>
+<li><a href="logger_ex_2.cpp.html">Logger_Advanced</a></li>
+<li><a href="matrix_ex.cpp.html">Matrix</a></li>
+<li><a href="matrix_expressions_ex.cpp.html">Matrix_Expressions</a></li>
+<li><a href="member_function_pointer_ex.cpp.html">Member_Function_Pointer</a></li>
+<li><a href="model_selection_ex.cpp.html">Model_Selection</a></li>
+<li><a href="multiclass_classification_ex.cpp.html">Multiclass_Classification</a></li>
+<li><a href="multithreaded_object_ex.cpp.html">Multithreaded_Object</a></li>
+<li><a href="mlp_ex.cpp.html">Neural_Network</a></li>
+<li><a href="least_squares_ex.cpp.html">Non-Linear Least Squares</a></li>
+<li><a href="svm_pegasos_ex.cpp.html">Online_SVM</a></li>
+<li><a href="optimization_ex.cpp.html">Optimization</a></li>
+<li><a href="pipe_ex.cpp.html">Pipe</a></li>
+<li><a href="pipe_ex_2.cpp.html">Pipe_2</a></li>
+<li><a href="quantum_computing_ex.cpp.html">Quantum_Computing</a></li>
+<li><a href="queue_ex.cpp.html">Queue</a></li>
+<li><a href="rank_features_ex.cpp.html">Rank_Features</a></li>
+<li><a href="rvm_ex.cpp.html">Relevance_Vector_Classification</a></li>
+<li><a href="rvm_regression_ex.cpp.html">Relevance_Vector_Regression</a></li>
+<li><a href="sockets_ex.cpp.html">Sockets</a></li>
+<li><a href="sockets_ex_2.cpp.html">Sockets_2</a></li>
+<li><a href="sockstreambuf_ex.cpp.html">Sockstreambuf</a></li>
+<li><a href="svm_sparse_ex.cpp.html">Sparse_Vectors</a></li>
+<li><a href="std_allocator_ex.cpp.html">Std_C++_Allocator</a></li>
+<li><a href="svm_ex.cpp.html">Support_Vector_Machine</a></li>
+<li><a href="svr_ex.cpp.html">Support_Vector_Regression</a></li>
+<li><a href="surf_ex.cpp.html">SURF</a></li>
+<li><a href="threaded_object_ex.cpp.html">Threaded_Object</a></li>
+<li><a href="threads_ex.cpp.html">Threads</a></li>
+<li><a href="thread_function_ex.cpp.html">Thread_Function</a></li>
+<li><a href="thread_pool_ex.cpp.html">Thread_Pool</a></li>
+<li><a href="timer_ex.cpp.html">Timer</a></li>
+<li><a href="xml_parser_ex.cpp.html">XML_Parser</a></li>
+</ul>
+</li>
+<li><a href="index.html">Home</a></li>
+<li><a href="compile.html">How to compile</a></li>
+<li><a href="howto_contribute.html">How to contribute</a></li>
+<li><a href="term_index.html">Index</a></li>
+<li><a href="intro.html">Introduction</a></li>
+<li><a href="license.html">License</a></li>
+<li><a href="books.html">Suggested Books</a></li>
+</ul>
+<br>
+ 
+      <b>Current Release</b><ul class="tree">
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="release_notes.html">Release Notes</a></li>
+<li>Version: 17.37</li>
+</ul>
+<br>
+
+
+      
+    </td>
+<td width="1"></td>
+</tr>
+<tr><td valign="bottom">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      
+      Last Modified:<br>
+      Mar 24, 2011
+      <br>
+      <br>
+   </td></tr>
+</table>
+</td>
+<td VALIGN="TOP" width="100%" style="border: 1px solid rgb(102,102,102);">
+<center><h1>Change Log</h1></center>
+<u>Revision</u>: 4204<br><u>Date</u>: Mar 24, 2011
+      (23:42:41 UTC)
+
+   <br><pre>Fixed a compile time error that happens on debian's gcc 4.1.2
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/svm/function.h</div>
+<div id="row1">/trunk/dlib/svm/svm_c_linear_trainer.h</div>
+<div id="row2">/trunk/dlib/svm/svm_multiclass_linear_trainer.h</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4202<br><u>Date</u>: Mar 24, 2011
+      (23:15:59 UTC)
+
+   <br><pre>added to svn:ignore list</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/test</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4201<br><u>Date</u>: Mar 24, 2011
+      (22:20:43 UTC)
+
+   <br><pre>fixed grammar
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/svm/structural_svm_problem_abstract.h</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4200<br><u>Date</u>: Mar 24, 2011
+      (02:55:06 UTC)
+
+   <br><pre>minor change to avoid compiler warning in visual studio.</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/svm/svm_multiclass_linear_trainer.h</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4198<br><u>Date</u>: Mar 24, 2011
+      (02:34:54 UTC)
+
+   <br><pre>Added a unit test for the new svm_multiclass_linear_trainer. 
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/test/CMakeLists.txt</div>
+<div id="row1">/trunk/dlib/test/makefile</div>
+</div>
+<div id="logb">
+<div class="bsolid"><b><font color="blue">Added</font></b></div>
+<div id="row2">/trunk/dlib/test/svm_multiclass_linear.cpp</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4197<br><u>Date</u>: Mar 24, 2011
+      (02:23:59 UTC)
+
+   <br><pre>Filled out spec and cleaned up code.
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/svm/svm_multiclass_linear_trainer.h</div>
+<div id="row1">/trunk/dlib/svm/svm_multiclass_linear_trainer_abstract.h</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4196<br><u>Date</u>: Mar 24, 2011
+      (02:08:31 UTC)
+
+   <br><pre>Added some missing DLIB_ASSERT statements.
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/svm/one_vs_all_trainer.h</div>
+<div id="row1">/trunk/dlib/svm/one_vs_one_trainer.h</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4195<br><u>Date</u>: Mar 24, 2011
+      (01:52:44 UTC)
+
+   <br><pre>Moved the new multiclass svm trainer into dlib.  Still need to clean up the code 
+and setup the abstract file.
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/svm.h</div>
+</div>
+<div id="logb">
+<div class="bsolid"><b><font color="blue">Added</font></b></div>
+<div id="row2">/trunk/dlib/svm/svm_multiclass_linear_trainer.h</div>
+<div id="row1">/trunk/dlib/svm/svm_multiclass_linear_trainer_abstract.h</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4194<br><u>Date</u>: Mar 24, 2011
+      (01:51:56 UTC)
+
+   <br><pre>Fixed compile time error
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/svm/structural_svm_problem.h</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4192<br><u>Date</u>: Mar 23, 2011
+      (23:43:56 UTC)
+
+   <br><pre>improved spec
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/svm/structural_svm_problem_abstract.h</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4190<br><u>Date</u>: Mar 23, 2011
+      (17:40:22 UTC)
+
+   <br><pre>updated spec
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/svm/structural_svm_problem_abstract.h</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4189<br><u>Date</u>: Mar 23, 2011
+      (16:13:25 UTC)
+
+   <br><pre>Fixed grammar
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/svm/svm_c_linear_trainer_abstract.h</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4188<br><u>Date</u>: Mar 23, 2011
+      (02:00:53 UTC)
+
+   <br><pre>Added a structural SVM solver.
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/svm.h</div>
+</div>
+<div id="logb">
+<div class="bsolid"><b><font color="blue">Added</font></b></div>
+<div id="row2">/trunk/dlib/svm/structural_svm_problem.h</div>
+<div id="row1">/trunk/dlib/svm/structural_svm_problem_abstract.h</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4187<br><u>Date</u>: Mar 23, 2011
+      (01:08:55 UTC)
+
+   <br><pre>Minor cleanup, I removed unnecessary code.
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/svm/function.h</div>
+<div id="row1">/trunk/dlib/svm/function_abstract.h</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4186<br><u>Date</u>: Mar 23, 2011
+      (00:39:39 UTC)
+
+   <br><pre>Removed inappropriate uses of const on the be_verbose() functions.
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/optimization/optimization_stop_strategies.h</div>
+<div id="row1">/trunk/dlib/optimization/optimization_stop_strategies_abstract.h</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4185<br><u>Date</u>: Mar 23, 2011
+      (00:32:15 UTC)
+
+   <br><pre>Added some more tests for the max_cost_assignment() function.
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/test/max_cost_assignment.cpp</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4184<br><u>Date</u>: Mar 23, 2011
+      (00:24:39 UTC)
+
+   <br><pre>Minor change to avoid a compiler warning in gcc.
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/gui_core/gui_core_kernel_2.cpp</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4182<br><u>Date</u>: Mar 22, 2011
+      (02:38:46 UTC)
+
+   <br><pre>Added the multiclass_linear_decision_function object.
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/svm/function.h</div>
+<div id="row1">/trunk/dlib/svm/function_abstract.h</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4181<br><u>Date</u>: Mar 22, 2011
+      (00:56:08 UTC)
+
+   <br><pre>It occurred to me that in some cases it is very easy to end up with dense vectors
+which are slightly smaller than their corresponding sparse vectors.  So I changed 
+the requires clause of the dot(sparse,dense) and dot(dense,sparse) functions to not 
+require that the dense vector's size &gt; sparse vector's size.  Now any combination 
+of sizes is legal.
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/svm/sparse_vector.h</div>
+<div id="row1">/trunk/dlib/svm/sparse_vector_abstract.h</div>
+<div id="row2">/trunk/dlib/test/svm_c_linear.cpp</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4179<br><u>Date</u>: Mar 20, 2011
+      (18:36:53 UTC)
+
+   <br><pre>Renamed assign_dense_to_sparse() to assign() and made it capable of also 
+assigning from sparse to sparse.
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/svm/sparse_vector.h</div>
+<div id="row1">/trunk/dlib/svm/sparse_vector_abstract.h</div>
+<div id="row2">/trunk/dlib/svm/svm_c_linear_trainer.h</div>
+<div id="row1">/trunk/dlib/test/svm_c_linear.cpp</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4178<br><u>Date</u>: Mar 20, 2011
+      (18:12:48 UTC)
+
+   <br><pre>Clarified spec.
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/svm/sparse_vector_abstract.h</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4177<br><u>Date</u>: Mar 20, 2011
+      (14:13:32 UTC)
+
+   <br><pre>Added a dot() function which can dot a sparse vector with a dense vector.  
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/svm/sparse_vector.h</div>
+<div id="row1">/trunk/dlib/svm/sparse_vector_abstract.h</div>
+<div id="row2">/trunk/dlib/svm/svm_c_linear_trainer.h</div>
+<div id="row1">/trunk/dlib/test/svm_c_linear.cpp</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4175<br><u>Date</u>: Mar 18, 2011
+      (18:42:53 UTC)
+
+   <br><pre>This change is mainly about adding a result_type typedef to the various function objects.  
+Prior to this change, different function objects declared their return type in different ways,
+now this has all been reconciled.  Now they all declare it as a public typedef named result_type.
+
+I also simplified the cross_validate_multiclass_trainer(), cross_validate_trainer(), 
+test_binary_decision_function(), and test_multiclass_decision_function().  They now always
+return double matrices regardless of any other consideration. 
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/any/any_decision_function.h</div>
+<div id="row1">/trunk/dlib/any/any_decision_function_abstract.h</div>
+<div id="row2">/trunk/dlib/statistics/statistics.h</div>
+<div id="row1">/trunk/dlib/statistics/statistics_abstract.h</div>
+<div id="row2">/trunk/dlib/svm/cross_validate_multiclass_trainer.h</div>
+<div id="row1">/trunk/dlib/svm/cross_validate_multiclass_trainer_abstract.h</div>
+<div id="row2">/trunk/dlib/svm/cross_validate_regression_trainer.h</div>
+<div id="row1">/trunk/dlib/svm/function.h</div>
+<div id="row2">/trunk/dlib/svm/function_abstract.h</div>
+<div id="row1">/trunk/dlib/svm/one_vs_all_decision_function.h</div>
+<div id="row2">/trunk/dlib/svm/one_vs_all_decision_function_abstract.h</div>
+<div id="row1">/trunk/dlib/svm/one_vs_one_decision_function.h</div>
+<div id="row2">/trunk/dlib/svm/one_vs_one_decision_function_abstract.h</div>
+<div id="row1">/trunk/dlib/svm/svm.h</div>
+<div id="row2">/trunk/dlib/svm/svm_abstract.h</div>
+<div id="row1">/trunk/dlib/test/data_io.cpp</div>
+<div id="row2">/trunk/dlib/test/one_vs_all_trainer.cpp</div>
+<div id="row1">/trunk/dlib/test/one_vs_one_trainer.cpp</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4174<br><u>Date</u>: Mar 18, 2011
+      (14:35:35 UTC)
+
+   <br><pre>Added some tests for the LIBSVM formatted data IO functions 
+and related routines.
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/test/CMakeLists.txt</div>
+<div id="row1">/trunk/dlib/test/makefile</div>
+</div>
+<div id="logb">
+<div class="bsolid"><b><font color="blue">Added</font></b></div>
+<div id="row2">/trunk/dlib/test/create_iris_datafile.cpp</div>
+<div id="row1">/trunk/dlib/test/create_iris_datafile.h</div>
+<div id="row2">/trunk/dlib/test/data_io.cpp</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4172<br><u>Date</u>: Mar 18, 2011
+      (13:31:52 UTC)
+
+   <br><pre>Added the fix_nonzero_indexing() function.
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/data_io/libsvm_io.h</div>
+<div id="row1">/trunk/dlib/data_io/libsvm_io_abstract.h</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4171<br><u>Date</u>: Mar 16, 2011
+      (23:42:57 UTC)
+
+   <br><pre>made test more robust</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/test/empirical_kernel_map.cpp</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4170<br><u>Date</u>: Mar 16, 2011
+      (23:33:25 UTC)
+
+   <br><pre>Simplified the oca implementation slightly.  It no longer keeps track of the
+best point seen so far.  This change will allow me to use the optimizer in conjunction
+with methods for quickly approximating subgradients and risk values without needing
+to worry about the optimizer permanently fixating on what it erroneously thinks
+is the best point.  Now the optimizer will just keep solving the cutting plane
+subproblem and will use that solution as the current iterate and best known
+solution.
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/optimization/optimization_oca.h</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4168<br><u>Date</u>: Mar 15, 2011
+      (22:42:33 UTC)
+
+   <br><pre>Renamed max_index_value_plus_one() (a function for working with graphs) to 
+max_index_plus_one() so that it uses the same name as the essentially identical
+function for working with sparse vectors.
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/manifold_regularization/graph_creation.h</div>
+<div id="row1">/trunk/dlib/manifold_regularization/graph_creation_abstract.h</div>
+<div id="row2">/trunk/dlib/manifold_regularization/linear_manifold_regularizer.h</div>
+<div id="row1">/trunk/dlib/manifold_regularization/linear_manifold_regularizer_abstract.h</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4167<br><u>Date</u>: Mar 15, 2011
+      (22:38:36 UTC)
+
+   <br><pre>Moved some functions for dealing with sparse vectors out of the svm_c_linear_trainer 
+implementation and into the sparse_vector.h header.  These are the add_to(), subtract_from(),
+and max_index_plus_one() functions.  
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/data_io/libsvm_io.h</div>
+<div id="row1">/trunk/dlib/svm/sparse_vector.h</div>
+<div id="row2">/trunk/dlib/svm/sparse_vector_abstract.h</div>
+<div id="row1">/trunk/dlib/svm/svm_c_linear_trainer.h</div>
+<div id="row2">/trunk/dlib/test/svm_c_linear.cpp</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4166<br><u>Date</u>: Mar 15, 2011
+      (02:03:06 UTC)
+
+   <br><pre>Added a value_type typedef to matrix_exp so it's easier to write templates
+which operate on STL containers and matrix objects.
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/matrix/matrix_exp.h</div>
+<div id="row1">/trunk/dlib/matrix/matrix_exp_abstract.h</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4165<br><u>Date</u>: Mar 13, 2011
+      (18:21:50 UTC)
+
+   <br><pre>Removed some old comments
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/svm/one_vs_one_trainer.h</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4164<br><u>Date</u>: Mar 13, 2011
+      (17:19:56 UTC)
+
+   <br><pre>Fixed a bug in the kernel_matrix() function.  It didn't compile when used with 
+sparse samples which were of type std::vector&lt;std::pair&lt;&gt; &gt;.  Moreover, some of 
+the trainers have a dependency on kernel_matrix() so this fix makes those trainers 
+also work with this kind of sparse sample.
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/svm/kernel_matrix.h</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4162<br><u>Date</u>: Mar 13, 2011
+      (17:13:01 UTC)
+
+   <br><pre>Added an is_pair template for telling if a type is a std::pair object.
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/is_kind.h</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4161<br><u>Date</u>: Mar 10, 2011
+      (01:14:26 UTC)
+
+   <br><pre>Fixed a bug in load_libsvm_formatted_data().  Forgot to clear the contents
+of the labels output vector before adding the loaded label data.  
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/data_io/libsvm_io.h</div>
+</div>
+<hr class="fullhr">
+<u>Revision</u>: 4160<br><u>Date</u>: Mar 03, 2011
+      (22:06:02 UTC)
+
+   <br><pre>Fixed typo in spec
+</pre>
+<div id="logb">
+<div class="bsolid"><b><font color="black">Modified</font></b></div>
+<div id="row2">/trunk/dlib/compress_stream/compress_stream_kernel_abstract.h</div>
+</div>
+<hr class="fullhr">
+      <br>
+      <center><a href="old_change_log.html">Old Change Logs</a></center>
+      <br>
+   </td>
+</tr></table></div>
+</body>
+</html>

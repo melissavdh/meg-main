@@ -1,0 +1,33 @@
+2770 3.63842
+Residual saved as new image: n777_residual.fits
+Model saved as new image: n777_model.fits
+
+******************** FINAL PARAMETER VALUES ********************
+Fitness of model          =  3.63842
+Sersic index              =  1.67406
+Background level          =  1903.49
+Scale radius              =  2.50545
+Central co-ordinates      =  (164.341,233.943)
+Axis ratio                =  0.849937
+Position angle (degrees)  =  58.4336
+Central brightness        =  32432.9
+PSF sigma                 =  0.331013
+Height of delta function  =  0.195057
+****************************************************************
+
+
+real	11m35.114s
+
+******************** FINAL PARAMETER VALUES ********************
+Fitness of model           =  3.64833
+Sersic index               =  1.6816
+Background level           =  1902.6
+Scale radius               =  2.46419
+Central co-ordinates       =  (164.327,234.476)
+Axis ratio                 =  0.852193
+Position angle (degrees)   =  58.8817
+Central brightness         =  31605.1
+PSF sigma                  =  0.323425
+Reduction in delta height  =  -0.00473081
+****************************************************************
+
